@@ -1,0 +1,46 @@
+#message {
+    resize: none;
+    font-size: 20px;
+}
+
+#glyph_design {
+    box-sizing: padding-box;
+    outline: #1c81a5 1px solid;
+}
+
+.memcanvas {
+    box-sizing: padding-box;
+    outline: #000000 1px solid;
+}
+
+.memcanvas:hover {
+    box-sizing: padding-box;
+    outline: #ffff00 1px solid;
+}
+
+#glyphtable td
+{
+    text-align: center;
+    vertical-align: middle;
+}
+
+body {
+    margin: 0 auto;
+    max-width: 50em;
+    font-family: "Helvetica", "Arial", sans-serif;
+    line-height: 1.15;
+    padding: 1em 1em;
+}
+
+h1, h2, strong {
+  color: #333;
+}
+
+a {
+  color: #e81c4f;
+}
+
+
+body {
+  color: #566b78;
+}

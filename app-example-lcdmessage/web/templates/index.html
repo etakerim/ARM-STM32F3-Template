@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Informačný panel</title>
+    <meta charset="utf8" />
+    <link rel="stylesheet" type="text/css" href="static/styles.css">
+</head>
+<body>
+    <h1>Informačný panel</h1>
+    <br />
+    <form id="sender" method="post">
+        <h2>Nová správa</h2>
+        <textarea id="message" name="message" rows="2" cols="40"></textarea>
+        <br />
+        <table id="glyphtable">
+            <tr>
+            {% for i in range(8) %}
+                <td><b>{{ i }}</b></td>
+            {% endfor %}
+            </tr>
+            <tr>
+            {% for i in range(8) %}
+                <td>
+                    <canvas id="{{ 'memchar' + i|string }}"
+                            class="memcanvas" width="25" height="40"></canvas>
+                </td>
+            {% endfor %}
+            </tr>
+        </table>
+        <div>
+        <input type="submit" value="Poslať"/>
+        <img id="loading" src="static/wait.gif" style="display:none;" width="16" />
+        </div>
+    </form>
+    <p id="status" style="display: none;"></p>
+
+    <h2>Aktuálna správa</h2>
+    <p id="lastmsg"></p>
+
+    <h2>Nový znak</h2>
+    <div>
+        <button id="clear_design">Vymazať</button>
+        <button id="download_design">Stiahnuť</button>
+        <input type="file" id="upload_design"/>
+    </div>
+    <br />
+    <div>
+        <canvas id="glyph_design"></canvas>
+    </div>
+    <br />
+    <div>
+       <input type="number" id="mem_design" min="0" max="7" size="3" />
+       <button id="save_design">Vlož na displej</button>
+    </div>
+</body>
+<script type="text/javascript" src="static/glypheditor.js"></script>
+<script type="text/javascript" src="static/sender.js"></script>
+</html>
