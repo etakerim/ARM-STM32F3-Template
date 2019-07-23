@@ -7,33 +7,26 @@ DEFINES =-DSTM32F303xC
 # OPENOCD_CONF = board/stm32f3discovery.cfg
 
 PROJECT = msgboard
-#SOURCES = src/examples/msgboard.c src/examples/ltm_parser.c
-SOURCES = src/experiments/pwm.c
-
-#SOURCES += src/libstm/gpio.c src/libstm/queue.c src/libstm/i2c.c \
-#           src/libstm/systick.c src/libstm/usart.c src/libstm/charlcd.c
+BUILD_DIR = lcdmessage/build
+SOURCES = lcdmessage/src/msgboard.c lcdmessage/src/ltm_parser.c
+SOURCES += src/libstm/gpio.c src/libstm/queue.c src/libstm/i2c.c \
+           src/libstm/systick.c src/libstm/usart.c src/libstm/charlcd.c
 
 SOURCES += $(CMSIS_SRC)/system.c  $(CMSIS_SRC)/startup.c\
            $(CMSIS_SRC)/vectors.c
 INCLUDES = -ICMSIS/include/generic/ -I$(CMSIS_INC)/ -Isrc/libstm/
 LDFLAGS = -T$(CMSIS_SRC)/memory.ld
-BUILD_DIR = build
 OPTIMIZE = s
-#s ,0, 1, 2
+# s ,0, 1, 2
 
-
-COMPILER_PATH = /home/miroslav/Dokumenty/gcc-arm-none-eabi-5_4-2016q3/bin
-# OPENOCD_PATH = /home/miroslav/Dokumenty/openocd/0.10.0-7-20180123-1217/bin
-STLINK_PATH =
-
-CC       = $(COMPILER_PATH)/arm-none-eabi-gcc
-OBJCOPY  = $(COMPILER_PATH)/arm-none-eabi-objcopy
-SIZE     = $(COMPILER_PATH)/arm-none-eabi-size
-DEBUGGER = $(COMPILER_PATH)/arm-none-eabi-gdb
-OBJDUMP  = $(COMPILER_PATH)/arm-none-eabi-objdump
-OPENOCD = $(OPENOCD_PATH)/openocd
+CC       = arm-none-eabi-gcc
+OBJCOPY  = arm-none-eabi-objcopy
+SIZE     = arm-none-eabi-size
+DEBUGGER = arm-none-eabi-gdb
+OBJDUMP  = arm-none-eabi-objdump
 ST_FLASH  = st-flash
 ST_UTIL  = st-util
+# OPENOCD = $(OPENOCD_PATH)/openocd
 
 CFLAGS = -O$(OPTIMIZE) -mcpu=$(MCU) -mthumb -fmessage-length=0 -fsigned-char  \
          -ffunction-sections -fdata-sections -ffreestanding 				  \
